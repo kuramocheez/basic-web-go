@@ -8,10 +8,10 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/notes", controller.GetData)
-	r.HandleFunc("/notes/tambah-data", controller.PostData)
-	r.HandleFunc("/notes/ubah-data/{id}", controller.UpdateData)
-	r.HandleFunc("/notes/hapus-data/{id}", controller.DeleteData)
+	r.HandleFunc("/notes", controller.GetData).Method("GET")
+	r.HandleFunc("/notes", controller.PostData).Method("POST")
+	r.HandleFunc("/notes/{id}", controller.UpdateData).Method("PUT")
+	r.HandleFunc("/notes/{id}", controller.DeleteData).Method("DELETE")
 	http.ListenAndServe(":8000", r)
 }
 
